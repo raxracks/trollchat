@@ -6,9 +6,15 @@ const fs = require('fs');
 const bcrypt = require('bcrypt');
 const randomstring = require("randomstring");
 const cookieParser = require("cookie-parser");
+const rateLimit = require("express-rate-limit");
 const { Strategy, Scope } = require('@oauth-everything/passport-discord');
 const port = 3000;
 const saltRounds = 10;
+
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100
+});
 
 // holy fucking shit i need to move shit into a different file immediately
 
@@ -75,6 +81,7 @@ function format(path) {
 app.use(express.static('static'));
 app.use(cookieParser());
 app.use(passport.initialize());
+app.use('/api/', apiLimiter);
 
 passport.use(new Strategy(
     {
