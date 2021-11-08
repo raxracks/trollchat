@@ -48,3 +48,16 @@ a {
 a:hover {
     color: #ff6025;
 }
+
+.bg-darker {
+    background-color: #121212;
+}
+
+.server-list::-webkit-scrollbar {
+    display: none;
+}
+
+.server-list {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

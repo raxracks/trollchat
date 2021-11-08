@@ -79,7 +79,7 @@ app.use(passport.initialize());
 passport.use(new Strategy(
     {
         clientID: "553473081755172864",
-        clientSecret: "HqqEXI2ERS85XDF6i3W-saGdkPZMFRza",
+        clientSecret: process.env['CLIENT_SECRET'],
         callbackURL: "https://www.trollchat.cf/auth/discord/callback",
         scope: [Scope.EMAIL, Scope.IDENTIFY]
     }, (accessToken, refreshToken, profile, cb) => {
@@ -95,7 +95,7 @@ passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
-app.get('/', (req, res) => {
+app.get('', (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
 
