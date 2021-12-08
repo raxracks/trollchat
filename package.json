@@ -13,7 +13,7 @@
     "@oauth-everything/passport-discord": "^1.0.2",
     "argon2": "^0.28.2",
     "bcrypt": "^5.0.1",
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "^1.4.6",
     "express": "^4.17.1",
     "express-rate-limit": "^5.5.1",
     "passport": "^0.5.0",
