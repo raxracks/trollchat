@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <script defer src="/js/alpine.js"></script>
+  <link rel="stylesheet" href="/css/output.css">
+</head>
+
+<body x-data="{ selected: 0, channels: [] }" x-init="channels = await (await fetch('/api/v1/channels')).json()"
+  class="bg-zinc-600">
+  <div class="p-4 space-y-1">
+    <template x-for="(channel, index) in channels">
+      <div class="p-2 max-w-xs hover:bg-zinc-900 rounded-xl flex items-center space-x-4 text-white"
+        :class="{ 'bg-zinc-800': index === selected }" @click="() => selected = index">
+        <div class="shrink-0">
+          <img class="h-8 w-8 rounded-full" src="https://google.com/favicon.ico" alt="Profile Picture">
+        </div>
+        <div>
+          <div class="text-l font-medium" x-text="channel.name"></div>
+        </div>
+      </div>
+    </template>
+  </div>
+</body>
+
+</html>
